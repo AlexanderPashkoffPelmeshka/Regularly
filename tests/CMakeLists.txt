@@ -1,0 +1,28 @@
+include(CTest)
+find_package(GTest REQUIRED)
+
+add_executable(dfa_tests DKA_test.cpp)
+add_executable(nka_tests NKA_test.cpp)
+add_executable(mpdka_tests MPDKA_test.cpp)
+add_executable(pdka_tests PDKA_test.cpp)
+add_executable(parser_tests Parser_test.cpp)
+add_executable(optimisation_tests Optimisation_test.cpp)
+add_executable(machine_tests Machine_test.cpp)
+
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
+target_link_libraries(dfa_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(nka_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(mpdka_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(pdka_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(parser_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(optimisation_tests GTest::gtest GTest::gtest_main)
+target_link_libraries(machine_tests GTest::gtest GTest::gtest_main)
+
+gtest_discover_tests(dfa_tests)
+gtest_discover_tests(nka_tests)
+gtest_discover_tests(mpdka_tests)
+gtest_discover_tests(pdka_tests)
+gtest_discover_tests(parser_tests)
+gtest_discover_tests(optimisation_tests)
+gtest_discover_tests(machine_tests)
