@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$1" = "show" ]; then
+  cat Documentation.md
+  exit 0
+fi
+
+mkdir -p build/
+
+cmake -S . -B build/
+cmake --build build/
+
+if [ "$1" = "run" ]; then
+  echo "Запуск основной программы..."
+  ./build/bin/my_program
+elif [ "$1" = "test" ]; then
+  echo "Запуск тестов..."
+  ./build/bin/tests
+elif [ "$1" = "clean" ]; then
+  echo "Чистка!!!"
+  rm -rf ./build/*
+fi
